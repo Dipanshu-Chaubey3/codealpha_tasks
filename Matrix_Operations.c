@@ -1,88 +1,56 @@
 #include <stdio.h>
-#define MAX 10
-
-void input(int mat[MAX][MAX], int r, int c) {
-    for(int i = 0; i < r; i++)
-        for(int j = 0; j < c; j++) {
-            printf("Element [%d][%d]: ", i, j);
-            scanf("%d", &mat[i][j]);
-        }
-}
-
-void display(int mat[MAX][MAX], int r, int c) {
-    for(int i = 0; i < r; i++) {
-        for(int j = 0; j < c; j++)
-            printf("%d ", mat[i][j]);
-        printf("\n");
-    }
-}
-
-void add(int A[MAX][MAX], int B[MAX][MAX], int res[MAX][MAX], int r, int c) {
-    for(int i = 0; i < r; i++)
-        for(int j = 0; j < c; j++)
-            res[i][j] = A[i][j] + B[i][j];
-}
-
-void multiply(int A[MAX][MAX], int B[MAX][MAX], int res[MAX][MAX], int r1, int c1, int c2) {
-    for(int i = 0; i < r1; i++)
-        for(int j = 0; j < c2; j++) {
-            res[i][j] = 0;
-            for(int k = 0; k < c1; k++)
-                res[i][j] += A[i][k] * B[k][j];
-        }
-}
-
-void transpose(int mat[MAX][MAX], int res[MAX][MAX], int r, int c) {
-    for(int i = 0; i < r; i++)
-        for(int j = 0; j < c; j++)
-            res[j][i] = mat[i][j];
-}
-
 int main() {
-    int A[MAX][MAX], B[MAX][MAX], res[MAX][MAX];
+    int A[10][10], B[10][10], R[10][10];
     int r1, c1, r2, c2, choice;
-
-    printf("Rows and columns for Matrix A: ");
+    printf("Rows & Cols of A: ");
     scanf("%d %d", &r1, &c1);
-    printf("Enter Matrix A:\n");
-    input(A, r1, c1);
-
-    printf("Rows and columns for Matrix B: ");
+    printf("Enter A:\n");
+    for (int i=0;i<r1;i++)
+        for (int j=0;j<c1;j++)
+            scanf("%d", &A[i][j]);
+    printf("Rows & Cols of B: ");
     scanf("%d %d", &r2, &c2);
-    printf("Enter Matrix B:\n");
-    input(B, r2, c2);
-
-    printf("\n1. Addition\n2. Multiplication\n3. Transpose (Matrix A)\nChoice: ");
+    printf("Enter B:\n");
+    for (int i=0;i<r2;i++)
+        for (int j=0;j<c2;j++)
+            scanf("%d", &B[i][j]);
+    printf("\n1.Addition\n2.Multiply\n3.Transpose(A)\nChoice: ");
     scanf("%d", &choice);
-
-    switch(choice) {
-        case 1:
-            if(r1 == r2 && c1 == c2) {
-                add(A, B, res, r1, c1);
-                printf("\nResult (Addition):\n");
-                display(res, r1, c1);
-            } else
-                printf("Error: Same dimensions required!\n");
-            break;
-
-        case 2:
-            if(c1 == r2) {
-                multiply(A, B, res, r1, c1, c2);
-                printf("\nResult (Multiplication):\n");
-                display(res, r1, c2);
-            } else
-                printf("Error: Columns of A must equal rows of B!\n");
-            break;
-
-        case 3:
-            transpose(A, res, r1, c1);
-            printf("\nResult (Transpose of A):\n");
-            display(res, c1, r1);
-            break;
-
-        default:
-            printf("Invalid choice!\n");
+    if (choice == 1) {
+        if (r1==r2 && c1==c2) {
+            for (int i=0;i<r1;i++)
+                for (int j=0;j<c1;j++)
+                    R[i][j] = A[i][j] + B[i][j];
+            printf("\nAddition Result:\n");
+            for (int i=0;i<r1;i++) {
+                for (int j=0;j<c1;j++) printf("%d ", R[i][j]);
+                printf("\n");
+            }
+        } else printf("Error! Sizes differ.\n");
     }
-
+    else if (choice == 2) {
+        if (c1==r2) {
+            for (int i=0;i<r1;i++)
+                for (int j=0;j<c2;j++) {
+                    R[i][j]=0;
+                    for (int k=0;k<c1;k++)
+                        R[i][j]+=A[i][k]*B[k][j];
+                }
+            printf("\nMultiplication Result:\n");
+            for (int i=0;i<r1;i++) {
+                for (int j=0;j<c2;j++) printf("%d ", R[i][j]);
+                printf("\n");
+            }
+        } else printf("Error! Cols of A != Rows of B.\n");
+    }
+    else if (choice == 3) {
+        printf("\nTranspose of A:\n");
+        for (int i=0;i<c1;i++) {
+            for (int j=0;j<r1;j++)
+                printf("%d ", A[j][i]);
+            printf("\n");
+        }
+    }
+    else printf("Invalid choice!\n");
     return 0;
 }
