@@ -1,83 +1,24 @@
-# CodeAlpha C Programming Projects
+# CodeAlpha C Programming Tasks
 
-A collection of C programming projects developed as part of my programming practice during my CodeAlpha internship.
+This repository contains two beginner C programs: a basic calculator and a matrix operations menu.
 
-## Projects
+## Requirements
+- GCC or another C compiler
 
-### 1. Basic Calculator
-A simple calculator built using C to perform basic arithmetic operations.
-
-**Concepts used:**
-- Switch statements
-- User input and output
-- Conditional logic
-- Arithmetic operations
-
-## Project Screenshots
-
-### Basic Calculator
-![Calculator Output](calculator-output.png)
-
-
-### 2. Matrix Operations Calculator
-A C program for performing matrix operations.
-
-**Features:**
-- Matrix addition
-- Matrix multiplication
-- Matrix transpose
-
-**Concepts used:**
-- Two-dimensional arrays
-- Nested loops
-- Functions and modular programming
-- Matrix dimensions and operations
-
-## Project Screenshots
-
-### Matrix Operations
-![Matrix Output](matrix-output.png)
-
-
-## Technologies Used
-- C Programming
-- Standard C libraries
-
-## Getting Started
-
-### Requirements
-- GCC compiler or another compatible C compiler
-- A code editor such as VS Code
-
-### Compile and Run
-
-Compile the relevant source file:
-
+## Calculator
 ```bash
-gcc calculator.c -o calculator
-```
+gcc -Wall -Wextra -Wpedantic calculator.c -o calculator
+# Windows: .\calculator.exe
+# macOS/Linux: ./calculator
+``
 
-Run on Windows:
-
+## Matrix operations
 ```bash
-calculator.exe
-```
+gcc -Wall -Wextra -Wpedantic matrix_operations.c -o matrix_operations
+# Windows: .\matrix_operations.exe
+# macOS/Linux: ./matrix_operations
+``
 
-On Linux or macOS:
+The calculator handles invalid input and division by zero. The matrix program supports addition, multiplication, and transpose, validates dimensions from 1 to 10, and checks operation compatibility.
 
-```bash
-./calculator
-```
-
-**Note:** Replace `calculator.c` with the actual filename of the source file you want to compile.
-
-## What I Learned
-- Applying programming fundamentals to practical tasks
-- Working with arrays and loops
-- Implementing matrix operations
-- Improving logical thinking and problem-solving
-
-## Author
-Dipanshu Chaubey
-
-GitHub: https://github.com/Dipanshu-Chaubey3
+These are learning projects; test them with representative valid and invalid inputs before relying on them.
