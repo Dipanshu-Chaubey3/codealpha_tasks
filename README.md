@@ -13,6 +13,12 @@ A simple calculator built using C to perform basic arithmetic operations.
 - Conditional logic
 - Arithmetic operations
 
+## Project Screenshots
+
+### Basic Calculator
+![Calculator Output](calculator-output.png)
+
+
 ### 2. Matrix Operations Calculator
 A C program for performing matrix operations.
 
@@ -26,6 +32,12 @@ A C program for performing matrix operations.
 - Nested loops
 - Functions and modular programming
 - Matrix dimensions and operations
+
+## Project Screenshots
+
+### Matrix Operations
+![Matrix Output](matrix-output.png)
+
 
 ## Technologies Used
 - C Programming
